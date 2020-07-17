@@ -1,0 +1,14 @@
+.home {
+  position: relative !important;
+}
+
+.productAlignment {
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+}
+.homepage-banner {
+  margin-bottom: -300px;
+  width: 100%;
+  background-size: cover;
+}
