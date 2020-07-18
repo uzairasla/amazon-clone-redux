@@ -11,7 +11,7 @@ function Home() {
           alt="banner"
           className=" homepage-banner"
         />
-        <div className="container-fluid align-where d-flex justify-content-around">
+        <div className="container-fluid productAlignment d-flex justify-content-around">
           <ProductCard
             imgSrc="https://images-na.ssl-images-amazon.com/images/I/81vs5TXBrlL._AC_SL1500_.jpg"
             cardTitle="Apple Macbook Pro 16 inch"
