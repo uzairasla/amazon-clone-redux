@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { signUp } from "../../actions/authAction";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [state, setState] = useState({
-    Email: "",
-    Password: "",
-    FName: "",
-    LName: "",
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
   });
   const handleChange = (e) => {
     setState({
@@ -13,7 +15,10 @@ const SignUp = () => {
       [e.target.id]: e.target.value,
     });
   };
-  const handleClick = () => {};
+  const handleClick = () => {
+    props.signUp(state);
+    console.log("You have signed Up");
+  };
 
   return (
     <div>
@@ -86,4 +91,17 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    authError: state.auth.authError,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (creds) => dispatch(signUp(creds)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { signIn } from "../../actions/authAction";
 
-const LogIn = () => {
+const LogIn = (props) => {
   const [state, setState] = useState({
-    Email: "",
-    Password: "",
+    email: "",
+    password: "",
   });
   const handleChange = (e) => {
     setState({
@@ -11,7 +13,10 @@ const LogIn = () => {
       [e.target.id]: e.target.value,
     });
   };
-  const handleClick = () => {};
+  const handleClick = () => {
+    props.signIn(state);
+    console.log("you have logged in");
+  };
   return (
     <div id="myLoginModal" className="modal fade" role="dialog">
       <div className="modal-dialog ">
@@ -54,4 +59,17 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: (creds) => dispatch(signIn(creds)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
