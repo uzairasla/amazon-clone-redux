@@ -7,6 +7,7 @@ export const signIn = (credentials) => {
       .signInWithEmailAndPassword(credentials.Email, credentials.Password)
       .then(() => {
         dispatch({ type: "LOGIN_SUCCESS" });
+        window.location.reload();
       })
       .catch((err) => {
         dispatch({ type: "LOGIN_ERROR", err });
@@ -47,6 +48,7 @@ export const signUp = (newUser) => {
       })
       .then(() => {
         dispatch({ type: "SIGNUP_SUCCESS" });
+        window.location.reload();
       })
       .catch((err) => {
         dispatch({ type: "SIGNUP_ERROR", err });

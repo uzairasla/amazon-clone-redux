@@ -1,0 +1,11 @@
+.img-resizing {
+  width: 150px;
+  object-fit: contain;
+}
+
+.measurement {
+  width: 300px;
+  height: 350px;
+  margin-top: 10px;
+  border-top: none;
+}

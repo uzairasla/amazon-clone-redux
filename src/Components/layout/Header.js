@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import SignUp from "./Modals/SignUp";
-import LogIn from "./Modals/LogIn";
+import { connect } from "react-redux";
+import SignedInLinks from "./SignedInLinks";
+import SignedOutLinks from "./SignedOutLinks";
 
-function Header() {
+function Header(props) {
+  const links = props.auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+
   return (
     <nav className="container-fluid header d-flex align-items-center">
       {/* code for logo*/}
@@ -21,28 +24,15 @@ function Header() {
         <i className="fa fa-search fa-lg p-2 " aria-hidden="true"></i>
       </div> */}
 
-      <div className="ml-auto mr-5">
-        <button
-          className="btn btn-danger mr-5"
-          data-toggle="modal"
-          data-target="#myModal"
-        >
-          Sign Up
-        </button>
-        <button
-          className="btn btn-danger "
-          data-toggle="modal"
-          data-target="#myLoginModal"
-        >
-          Log In
-        </button>
-      </div>
-      {/* Sign Up Form Modal */}
-      <SignUp />
-      {/* Log In Modal */}
-      <LogIn />
+      <div className="ml-auto mr-5">{links}</div>
     </nav>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth,
+  };
+};
 
-export default Header;
+export default connect(mapStateToProps)(Header);

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { signUp } from "../../actions/authAction";
+import { Link } from "react-router-dom";
 
 const SignUp = (props) => {
   const [state, setState] = useState({
-    email: "",
-    password: "",
-    firstName: "",
-    lastName: "",
+    Email: "",
+    Password: "",
+    FName: "",
+    LName: "",
   });
   const handleChange = (e) => {
     setState({
@@ -80,9 +81,11 @@ const SignUp = (props) => {
                 </small>
               </div>
 
-              <button onClick={handleClick} className="btn btn-secondary">
-                Sign UP
-              </button>
+              <Link to="/">
+                <button onClick={handleClick} className="btn btn-secondary">
+                  Sign UP
+                </button>
+              </Link>
             </div>
           </div>
         </div>

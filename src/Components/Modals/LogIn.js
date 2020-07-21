@@ -49,6 +49,7 @@ const LogIn = (props) => {
                 onChange={handleChange}
               />
             </div>
+
             <button onClick={handleClick} className="btn btn-secondary">
               Log In
             </button>

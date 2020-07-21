@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 import "./Home.css";
+import { data } from "../data/data";
 
 function Home() {
   return (
@@ -11,25 +12,18 @@ function Home() {
           alt="banner"
           className=" homepage-banner"
         />
-        <div className="container-fluid productAlignment d-flex justify-content-around">
-          <ProductCard
-            imgSrc="https://images-na.ssl-images-amazon.com/images/I/81vs5TXBrlL._AC_SL1500_.jpg"
-            cardTitle="Apple Macbook Pro 16 inch"
-            cardText="amazing laptop"
-            urlText="Add to Cart"
-          />
-          <ProductCard
-            imgSrc="https://m.media-amazon.com/images/I/51ak5UUMBKL._AC_SY240_.jpg"
-            cardTitle="Norton 360"
-            cardText="Delete any malware from your PC"
-            urlText="Add to Cart"
-          />
-          <ProductCard
-            imgSrc="https://images-na.ssl-images-amazon.com/images/I/81vs5TXBrlL._AC_SL1500_.jpg"
-            cardTitle="Apple Macbook Pro 16 inch"
-            cardText="amazing laptop"
-            urlText="Add to Cart"
-          />
+        <div className="container-fluid productAlignment d-flex flex-wrap justify-content-around">
+          {data.map((item) => {
+            return (
+              <ProductCard
+                id={item.id}
+                price={item.price}
+                desc={item.desc}
+                img={item.img}
+                title={item.title}
+              />
+            );
+          })}
         </div>
       </div>
     </>
